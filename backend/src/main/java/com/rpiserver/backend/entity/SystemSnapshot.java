@@ -39,7 +39,7 @@ public class SystemSnapshot {
     private Double diskUsedMb;
     private Double diskFreeMb;
     private Double diskTotalMb;
-    private Double diskUsagePercentage;
+    private Double diskUsedPercentage;
 
     //Temperature
     private Double temperature;

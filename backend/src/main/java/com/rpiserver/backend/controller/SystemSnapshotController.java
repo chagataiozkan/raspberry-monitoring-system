@@ -1,7 +1,9 @@
 package com.rpiserver.backend.controller;
 
-import com.rpiserver.backend.entity.SystemSnapshot;
+import com.rpiserver.backend.dto.SystemSnapshotRequest;
+import com.rpiserver.backend.dto.SystemSnapshotResponse;
 import com.rpiserver.backend.service.SystemSnapshotService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,17 +16,21 @@ public class SystemSnapshotController {
     private final SystemSnapshotService service;
 
     @PostMapping
-    public SystemSnapshot save(@RequestBody SystemSnapshot snapshot) {
-        return service.save(snapshot);
+    public SystemSnapshotResponse save(
+            @Valid
+            @RequestBody
+            SystemSnapshotRequest request) {
+
+        return service.save(request);
     }
 
     @GetMapping("/latest")
-    public SystemSnapshot getLatest() {
+    public SystemSnapshotResponse getLatest() {
         return service.getLatest();
     }
 
     @GetMapping
-    public List<SystemSnapshot> getAll() {
+    public List<SystemSnapshotResponse> getAll() {
         return service.getAll();
     }
 }

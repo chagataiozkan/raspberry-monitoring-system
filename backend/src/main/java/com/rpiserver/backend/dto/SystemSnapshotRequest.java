@@ -1,51 +1,83 @@
 package com.rpiserver.backend.dto;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class SystemSnapshotRequest {
 
-    //CPU
+    @NotNull
+    @PositiveOrZero
     private Double cpuUsage;
+
+    @NotNull
+    @Positive
     private Integer cpuCores;
+
+    @PositiveOrZero
     private Integer cpuCurrentMHz;
 
+    @PositiveOrZero
     private Double cpuLoad1Min;
+
+    @PositiveOrZero
     private Double cpuLoad5Min;
+
+    @PositiveOrZero
     private Double cpuLoad15Min;
 
-    //Memory
+    @PositiveOrZero
     private Double memoryUsedMb;
+
+    @PositiveOrZero
     private Double memoryFreeMb;
+
+    @PositiveOrZero
     private Double memoryTotalMb;
 
-    //Disk
+    @PositiveOrZero
     private Double diskUsedMb;
-    private Double diskFreeMb;
-    private Double diskTotalMb;
-    private Double diskUsagePercentage;
 
-    //Temperature
+    @PositiveOrZero
+    private Double diskFreeMb;
+
+    @PositiveOrZero
+    private Double diskTotalMb;
+
+    @PositiveOrZero
+    private Double diskUsedPercentage;
+
+    @PositiveOrZero
     private Double temperature;
 
-    //Network
+    @PositiveOrZero
     private Double networkRxKb;
+
+    @PositiveOrZero
     private Double networkTxKb;
 
-    //Health
+    @PositiveOrZero
     private Double healthScore;
+
     private String healthStatus;
 
-    //Throttling
     private Boolean undervoltage;
     private Boolean throttled;
     private Boolean frequencyCapped;
 
-    //Service
     private String serviceStatus;
     private String serviceUptime;
 
-    //System
     private String systemUptime;
+
+    @PositiveOrZero
     private Integer processCount;
 }
